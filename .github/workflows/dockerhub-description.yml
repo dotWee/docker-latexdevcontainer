@@ -15,5 +15,5 @@ jobs:
         uses: peter-evans/dockerhub-description@v3.4.2
         env:
           DOCKERHUB_USERNAME: qmcgaw
-          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
-          DOCKERHUB_REPOSITORY: qmcgaw/latexdevcontainer
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
+          DOCKERHUB_REPOSITORY: dotwee/latexdevcontainer
