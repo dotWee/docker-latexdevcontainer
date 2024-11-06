@@ -67,7 +67,9 @@ jobs:
             COMMIT=${{ steps.vars.outputs.commit }}
             VERSION=${{ steps.vars.outputs.version }}
             SCHEME=scheme-basic
-          tags: qmcgaw/latexdevcontainer:${{ steps.vars.outputs.version }}
+          tags: |
+            dotwee/latexdevcontainer:${{ steps.vars.outputs.version }}
+            ghcr.io/dotwee/latexdevcontainer:${{ steps.vars.outputs.version }}
           push: true
 
       - name: Build and push scheme-full image
@@ -79,5 +81,7 @@ jobs:
             COMMIT=${{ steps.vars.outputs.commit }}
             VERSION=${{ steps.vars.outputs.version }}
             SCHEME=scheme-full
-          tags: qmcgaw/latexdevcontainer:${{ steps.vars.outputs.version }}-full
+          tags: |
+            dotwee/latexdevcontainer:${{ steps.vars.outputs.version }}-full
+            ghcr.io/dotwee/latexdevcontainer:${{ steps.vars.outputs.version }}-full
           push: true

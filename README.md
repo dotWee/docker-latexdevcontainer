@@ -2,16 +2,16 @@
 
 **Ultimate Latex development container for Visual Studio Code**
 
-<img height="250" src="https://raw.githubusercontent.com/qdm12/latexdevcontainer/master/title.svg?sanitize=true">
+<img height="250" src="https://raw.githubusercontent.com/dotwee/docker-latexdevcontainer/master/title.svg?sanitize=true">
 
-[![Build status](https://github.com/qdm12/latexdevcontainer/workflows/CI/badge.svg)](https://github.com/qdm12/latexdevcontainer/actions?query=workflow%3ACI)
-[![Docker Pulls](https://img.shields.io/docker/pulls/qmcgaw/latexdevcontainer.svg)](https://hub.docker.com/r/qmcgaw/latexdevcontainer)
-[![Docker Stars](https://img.shields.io/docker/stars/qmcgaw/latexdevcontainer.svg)](https://hub.docker.com/r/qmcgaw/latexdevcontainer)
+[![Build status](https://github.com/dotwee/docker-latexdevcontainer/workflows/CI/badge.svg)](https://github.com/dotwee/docker-latexdevcontainer/actions?query=workflow%3ACI)
+[![Docker Pulls](https://img.shields.io/docker/pulls/dotwee/latexdevcontainer.svg)](https://hub.docker.com/r/dotwee/latexdevcontainer)
+[![Docker Stars](https://img.shields.io/docker/stars/dotwee/latexdevcontainer.svg)](https://hub.docker.com/r/dotwee/latexdevcontainer)
 
 [![Join Slack channel](https://img.shields.io/badge/slack-@qdm12-yellow.svg?logo=slack)](https://join.slack.com/t/qdm12/shared_invite/enQtOTE0NjcxNTM1ODc5LTYyZmVlOTM3MGI4ZWU0YmJkMjUxNmQ4ODQ2OTAwYzMxMTlhY2Q1MWQyOWUyNjc2ODliNjFjMDUxNWNmNzk5MDk)
-[![GitHub last commit](https://img.shields.io/github/last-commit/qdm12/latexdevcontainer.svg)](https://github.com/qdm12/latexdevcontainer/issues)
-[![GitHub commit activity](https://img.shields.io/github/commit-activity/y/qdm12/latexdevcontainer.svg)](https://github.com/qdm12/latexdevcontainer/issues)
-[![GitHub issues](https://img.shields.io/github/issues/qdm12/latexdevcontainer.svg)](https://github.com/qdm12/latexdevcontainer/issues)
+[![GitHub last commit](https://img.shields.io/github/last-commit/dotwee/docker-latexdevcontainer.svg)](https://github.com/dotwee/docker-latexdevcontainer/issues)
+[![GitHub commit activity](https://img.shields.io/github/commit-activity/y/dotwee/docker-latexdevcontainer.svg)](https://github.com/dotwee/docker-latexdevcontainer/issues)
+[![GitHub issues](https://img.shields.io/github/issues/dotwee/docker-latexdevcontainer.svg)](https://github.com/dotwee/docker-latexdevcontainer/issues)
 
 ## Features
 
@@ -20,8 +20,8 @@
 - Based on Debian Bullseye Slim, using [qmcgaw/basedevcontainer](https://github.com/qdm12/basedevcontainer)
 - Compatible with `amd64` and `aarch64`
 - **Two Docker images**:
-    - `qmcgaw/latexdevcontainer:latest` (default) which uses the TexLive basic scheme and has an uncompressed image size of 467MB
-    - `qmcgaw/latexdevcontainer:latest-full` which uses the TexLive full scheme and has an uncompressed image size of 4.2GB - most packages you would need are already installed.
+    - `dotwee/latexdevcontainer:latest` (default) which uses the TexLive basic scheme and has an uncompressed image size of 467MB
+    - `dotwee/latexdevcontainer:latest-full` which uses the TexLive full scheme and has an uncompressed image size of 4.2GB - most packages you would need are already installed.
 - Comes with `tlmgr` to install more LaTex packages as needed
 - Latex compilation to pdf with [latexmk](https://mg.readthedocs.io/latexmk.html)
 - Formatting on save using [latexindent](https://github.com/cmhughes/latexindent.pl)
@@ -34,7 +34,7 @@
 - Extensible with docker-compose.yml
 - Minimal uncompressed image size of 467MB
 
-[![Demo](https://i.imgur.com/4jFRIql.gif)](https://github.com/qdm12/latexdevcontainer)
+[![Demo](https://i.imgur.com/4jFRIql.gif)](https://github.com/dotwee/docker-latexdevcontainer)
 
 ## Requirements
 
@@ -57,7 +57,7 @@
     - Or manually: download this repository and put the [.devcontainer](.devcontainer) directory in your project.
 1. Open the command palette in Visual Studio Code (CTRL+SHIFT+P) and select `Remote-Containers: Open Folder in Container...` and choose your project directory
 
-[![Install](https://i.imgur.com/1NJHIbH.gif)](https://github.com/qdm12/latexdevcontainer#setup-for-a-project)
+[![Install](https://i.imgur.com/1NJHIbH.gif)](https://github.com/dotwee/docker-latexdevcontainer#setup-for-a-project)
 
 ## Install LaTex packages
 
@@ -68,14 +68,14 @@ tlmgr install lastpage
 texhash
 ```
 
-[![Install packages](https://i.imgur.com/mBM2NYB.gif)](https://github.com/qdm12/latexdevcontainer#install-latex-packages)
+[![Install packages](https://i.imgur.com/mBM2NYB.gif)](https://github.com/dotwee/docker-latexdevcontainer#install-latex-packages)
 
 ## Update the Latex Docker image
 
 1. Pull the docker image
 
     ```sh
-    docker pull qmcgaw/latexdevcontainer
+    docker pull dotwee/latexdevcontainer
     ```
 
 1. Open the command palette in Visual Studio Code (CTRL+SHIFT+P) and select `Remote-Containers: Rebuild and Reopen in Container...`. ⚠️ this will erase your container shell history and custom latex packages you added on top of the base image.
@@ -98,16 +98,16 @@ texhash
 - You can build the development image yourself:
 
     ```sh
-    docker build -t qmcgaw/latexdevcontainer -f Dockerfile https://github.com/qdm12/latexdevcontainer.git
+    docker build -t dotwee/latexdevcontainer -f Dockerfile https://github.com/dotwee/docker-latexdevcontainer.git
     ```
 
-- You can extend the Docker image `qmcgaw/latexdevcontainer` with your own instructions.
+- You can extend the Docker image `dotwee/latexdevcontainer` with your own instructions.
 
-    1. Create a file `.devcontainer/Dockerfile` with `FROM qmcgaw/latexdevcontainer`
+    1. Create a file `.devcontainer/Dockerfile` with `FROM dotwee/latexdevcontainer`
     1. Append instructions to the Dockerfile created. For example:
 
         ```Dockerfile
-        FROM qmcgaw/latexdevcontainer
+        FROM dotwee/latexdevcontainer
         RUN tlmgr install lastpage
         ```
 
@@ -122,4 +122,4 @@ texhash
 
 ## License
 
-This repository is under an [MIT license](https://github.com/qdm12/latexdevcontainer/master/LICENSE) unless indicated otherwise.
+This repository is under an [MIT license](https://github.com/dotwee/docker-latexdevcontainer/master/LICENSE) unless indicated otherwise.
