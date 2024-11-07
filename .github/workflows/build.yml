@@ -80,6 +80,20 @@ jobs:
             echo ::set-output name=platforms::linux/amd64,linux/arm64
           fi
 
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: |
+            dotwee/latexdevcontainer
+            ghcr.io/dotwee/latexdevcontainer
+          tags: |
+            type=raw,value=${{ steps.vars.outputs.version }}
+          labels: |
+            maintainer=Lukas Wolfsteiner <lukas@wolfsteiner.media>
+            org.opencontainers.image.title=latexdevcontainer
+            org.opencontainers.image.source="https://github.com/${{ github.repository }}"
+
       - name: Build and push scheme-basic image
         uses: docker/build-push-action@v4
         with:
@@ -89,10 +103,9 @@ jobs:
             COMMIT=${{ steps.vars.outputs.commit }}
             VERSION=${{ steps.vars.outputs.version }}
             SCHEME=scheme-basic
-          tags: |
-            dotwee/latexdevcontainer:${{ steps.vars.outputs.version }}
-            ghcr.io/dotwee/latexdevcontainer:${{ steps.vars.outputs.version }}
           push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
 
       - name: Build and push scheme-full image
         uses: docker/build-push-action@v4
@@ -105,5 +118,5 @@ jobs:
             SCHEME=scheme-full
           tags: |
             dotwee/latexdevcontainer:${{ steps.vars.outputs.version }}-full
-            ghcr.io/dotwee/latexdevcontainer:${{ steps.vars.outputs.version }}-full
           push: true
+          labels: ${{ steps.meta.outputs.labels }}
